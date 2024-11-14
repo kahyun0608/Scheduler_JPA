@@ -43,7 +43,7 @@ public class LoginSessionController {
         //이메일, 비밀번호로 조회한 userId로 유저 정보를 조회
         User loginUser = userRepository.findByIdOrElseThrow(userId);
 
-        //세션의 key 와 Value 설정
+        //세션의 key 와 Value(유저정보저장) 설정
         session.setAttribute(Const.LOGIN_USER, loginUser);
 
         return new ResponseEntity<>(HttpStatus.OK);

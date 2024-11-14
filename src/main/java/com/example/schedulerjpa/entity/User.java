@@ -1,6 +1,10 @@
 package com.example.schedulerjpa.entity;
 
+import common.Const;
 import jakarta.persistence.*;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
 
 @Getter
@@ -28,5 +32,12 @@ public class User extends BaseEntity {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    //로그인한 유저 정보를 찾음
+    public static User findSessionUser(ServletRequest request){
+    HttpServletRequest httpRequest = (HttpServletRequest) request;
+    HttpSession session = httpRequest.getSession(false);
+    return (User) session.getAttribute(Const.LOGIN_USER);
     }
 }

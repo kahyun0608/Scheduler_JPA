@@ -34,8 +34,8 @@ public class ScheduleService {
         return toDto(savedSchedule);
     }
 
-    public List<ScheduleResponseDto> findAll() {
-        return scheduleRepository.findAll().stream().map(ScheduleResponseDto::toDto).toList();
+    public List<ScheduleResponseDto> findAll(User sessionUser) {
+        return scheduleRepository.findByUserId(sessionUser.getId()).stream().map(ScheduleResponseDto::toDto).toList();
     }
 
     public ScheduleResponseDto findScheduleByIdOrElseThrow(Long id) {

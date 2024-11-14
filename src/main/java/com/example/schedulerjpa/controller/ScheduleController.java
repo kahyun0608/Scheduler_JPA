@@ -2,13 +2,17 @@ package com.example.schedulerjpa.controller;
 
 import com.example.schedulerjpa.dto.ScheduleRequestDto;
 import com.example.schedulerjpa.dto.ScheduleResponseDto;
+import com.example.schedulerjpa.entity.User;
 import com.example.schedulerjpa.service.ScheduleService;
+import jakarta.servlet.ServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static com.example.schedulerjpa.entity.User.findSessionUser;
 
 @RestController
 @RequestMapping("/schedules")
@@ -18,18 +22,22 @@ public class ScheduleController {
     private final ScheduleService scheduleService;
 
     @PostMapping("/post")
-    public ResponseEntity<ScheduleResponseDto> saveSchedule(@RequestBody ScheduleRequestDto requestDto) {
+    public ResponseEntity<ScheduleResponseDto> saveSchedule(@RequestBody ScheduleRequestDto requestDto, ServletRequest request) {
 
-        ScheduleResponseDto savedScheduledDto = scheduleService.saveSchedule(requestDto.getUserId(), requestDto.getTitle(), requestDto.getContents());
+        User sessionUser = findSessionUser(request);
+
+        ScheduleResponseDto savedScheduledDto = scheduleService.saveSchedule(sessionUser.getId(), requestDto.getTitle(), requestDto.getContents());
 
         return new ResponseEntity<>(savedScheduledDto, HttpStatus.CREATED);
 
     }
 
     @GetMapping
-    public ResponseEntity<List<ScheduleResponseDto>> findAll() {
+    public ResponseEntity<List<ScheduleResponseDto>> findAll(ServletRequest request) {
 
-        List<ScheduleResponseDto> scheduleResponseDtoList = scheduleService.findAll();
+        User sessionUser = findSessionUser(request);
+
+        List<ScheduleResponseDto> scheduleResponseDtoList = scheduleService.findAll(sessionUser);
 
         return new ResponseEntity<>(scheduleResponseDtoList, HttpStatus.OK);
     }
