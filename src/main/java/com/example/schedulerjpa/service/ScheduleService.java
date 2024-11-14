@@ -60,4 +60,12 @@ public class ScheduleService {
 
         return toDto(scheduleFoundById);
     }
+
+    public void deleteSchedule(Long id) {
+
+        Schedule scheduleFoundById = scheduleRepository.findScheduleByIdOrElseThrow(id);
+
+        scheduleRepository.delete(scheduleFoundById);
+
+    }
 }
