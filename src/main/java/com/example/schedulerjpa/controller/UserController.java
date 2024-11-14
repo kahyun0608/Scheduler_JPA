@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> findUserById (@PathVariable Long id){
+    public ResponseEntity<UserResponseDto> findUserById(@PathVariable Long id) {
 
         UserResponseDto FoundUserResponseDto = userService.findUserByIdOrElseThrow(id);
 
@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUserById (@PathVariable Long id, @RequestBody SignUpRequestDto requestDto) {
+    public ResponseEntity<Void> deleteUserById(@PathVariable Long id, @RequestBody SignUpRequestDto requestDto) {
         userService.deleteUserById(id, requestDto.getPassword());
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

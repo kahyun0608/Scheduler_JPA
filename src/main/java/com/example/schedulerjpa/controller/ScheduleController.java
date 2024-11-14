@@ -18,7 +18,7 @@ public class ScheduleController {
     private final ScheduleService scheduleService;
 
     @PostMapping("/post")
-    public ResponseEntity<ScheduleResponseDto> saveSchedule (@RequestBody ScheduleRequestDto requestDto){
+    public ResponseEntity<ScheduleResponseDto> saveSchedule(@RequestBody ScheduleRequestDto requestDto) {
 
         ScheduleResponseDto savedScheduledDto = scheduleService.saveSchedule(requestDto.getUserId(), requestDto.getTitle(), requestDto.getContents());
 
@@ -27,7 +27,7 @@ public class ScheduleController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ScheduleResponseDto>> findAll () {
+    public ResponseEntity<List<ScheduleResponseDto>> findAll() {
 
         List<ScheduleResponseDto> scheduleResponseDtoList = scheduleService.findAll();
 
@@ -35,21 +35,21 @@ public class ScheduleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ScheduleResponseDto> findScheduleById (@PathVariable Long id) {
+    public ResponseEntity<ScheduleResponseDto> findScheduleById(@PathVariable Long id) {
         ScheduleResponseDto scheduleFoundById = scheduleService.findScheduleByIdOrElseThrow(id);
 
         return new ResponseEntity<>(scheduleFoundById, HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ScheduleResponseDto> updateSchedule (@PathVariable Long id, @RequestBody ScheduleRequestDto requestDto){
+    public ResponseEntity<ScheduleResponseDto> updateSchedule(@PathVariable Long id, @RequestBody ScheduleRequestDto requestDto) {
         ScheduleResponseDto updatedResponseDto = scheduleService.updateSchedule(id, requestDto.getTitle(), requestDto.getContents());
 
         return new ResponseEntity<>(updatedResponseDto, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSchedule (@PathVariable Long id) {
+    public ResponseEntity<Void> deleteSchedule(@PathVariable Long id) {
 
         scheduleService.deleteSchedule(id);
 

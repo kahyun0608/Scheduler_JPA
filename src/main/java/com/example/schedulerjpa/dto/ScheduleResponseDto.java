@@ -20,7 +20,7 @@ public class ScheduleResponseDto {
 
     private final LocalDateTime updatedAt;
 
-    public ScheduleResponseDto(Long id, Long userId,String title, String contents, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public ScheduleResponseDto(Long id, Long userId, String title, String contents, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.userId = userId;
         this.title = title;

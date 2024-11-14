@@ -38,7 +38,7 @@ public class UserService {
 
         User foundUser = userRepository.findByIdOrElseThrow(id);
 
-        if (foundUser.getPassword().equals(password)){
+        if (foundUser.getPassword().equals(password)) {
             userRepository.delete(foundUser);
         } else {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Wrong Password.");

@@ -26,9 +26,10 @@ public class LoginSessionController {
 
     @PostMapping("/login")
     public ResponseEntity<Void> login(
-        @Valid @RequestBody LoginRequestDto requestDto,
-        HttpServletRequest request
-    ){
+            @Valid @RequestBody LoginRequestDto requestDto,
+            HttpServletRequest request
+    ) {
+        //로그인을 위한 이메일과 비밀번호를 받아 DB와 비교
         LoginResponseDto loginResponseDto = loginService.login(requestDto.getEmail(), requestDto.getPassword());
         Long userId = loginResponseDto.getUserId();
 
