@@ -29,7 +29,6 @@ public class LoginSessionController {
         @Valid @RequestBody LoginRequestDto requestDto,
         HttpServletRequest request
     ){
-
         LoginResponseDto loginResponseDto = loginService.login(requestDto.getEmail(), requestDto.getPassword());
         Long userId = loginResponseDto.getUserId();
 
@@ -49,4 +48,6 @@ public class LoginSessionController {
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
+
+
 }
