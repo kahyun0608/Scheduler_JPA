@@ -1,7 +1,9 @@
 package com.example.schedulerjpa.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "schedule")
 public class Schedule extends BaseEntity{
@@ -21,5 +23,12 @@ public class Schedule extends BaseEntity{
     @Column(nullable = false)
     private String contents;
 
+    public Schedule() {
+    }
 
+    public Schedule(User user, String title, String contents) {
+        this.user = user;
+        this.title = title;
+        this.contents = contents;
+    }
 }
