@@ -36,7 +36,7 @@ public class LoginFilter implements Filter {
             HttpSession session = httpRequest.getSession(false);
 
             //로그인을 하지 않아 세션이 없는 경우
-            if(session == null || session.getAttribute(Const.LOGIN_USER) == null) {
+            if (session == null || session.getAttribute(Const.LOGIN_USER) == null) {
                 throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "로그인 해주세요.");
             }
             //로그인 성공 로직
