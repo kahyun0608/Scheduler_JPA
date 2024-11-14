@@ -15,8 +15,10 @@ public class Schedule extends BaseEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(nullable = false, length = 20)
     private String title;
 
+    @Column(nullable = false)
     private String contents;
 
 
