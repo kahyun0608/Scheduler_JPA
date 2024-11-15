@@ -1,5 +1,6 @@
 package com.example.schedulerjpa.entity;
 
+import com.example.schedulerjpa.dto.LoginResponseDto;
 import common.Const;
 import jakarta.persistence.*;
 import jakarta.servlet.ServletRequest;
@@ -34,10 +35,18 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
+    public User(Long id) {
+        this.id = id;
+    }
+
     //로그인한 유저 정보를 찾음
     public static User findSessionUser(ServletRequest request){
-    HttpServletRequest httpRequest = (HttpServletRequest) request;
-    HttpSession session = httpRequest.getSession(false);
-    return (User) session.getAttribute(Const.LOGIN_USER);
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpSession session = httpRequest.getSession(false);
+        return (User) session.getAttribute(Const.LOGIN_USER);
+    }
+
+    public static User toUser (LoginResponseDto dto){
+        return new User(dto.getUserId());
     }
 }
