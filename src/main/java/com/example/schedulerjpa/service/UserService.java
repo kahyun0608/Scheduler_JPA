@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @Getter
 @Service
 @RequiredArgsConstructor
@@ -18,6 +20,12 @@ public class UserService {
     private final UserRepository userRepository;
 
     public SignUpResponseDto signUp(String username, String email, String password) {
+
+        Optional<User> findUser = userRepository.findByEmail(email);
+
+        if (findUser.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "존재하는 이메일입니다.");
+        }
 
         User user = new User(username, email, password);
 
