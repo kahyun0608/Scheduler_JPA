@@ -15,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.server.ResponseStatusException;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,9 +32,9 @@ public class LoginSessionController {
         LoginResponseDto loginResponseDto = loginService.login(requestDto.getEmail(), requestDto.getPassword());
         Long userId = loginResponseDto.getUserId();
 
-        if (userId == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
-        }
+//        if (userId == null) {
+//            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+//        }
 
         //세션 요청 : default value -> true
         HttpSession session = request.getSession();

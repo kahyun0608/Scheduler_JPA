@@ -20,6 +20,7 @@ public class UserService {
     public SignUpResponseDto signUp(String username, String email, String password) {
 
         User user = new User(username, email, password);
+
         User savedUser = userRepository.save(user);
 
         return new SignUpResponseDto(savedUser.getId(), savedUser.getUsername(), savedUser.getEmail(), savedUser.getCreatedAt(), savedUser.getUpdatedAt());

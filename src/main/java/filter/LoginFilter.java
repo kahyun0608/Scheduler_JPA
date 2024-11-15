@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.util.PatternMatchUtils;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -22,7 +21,7 @@ public class LoginFilter implements Filter {
             ServletRequest request,
             ServletResponse response,
             FilterChain chain
-    ) throws IOException, ServletException {
+    ) throws IOException, ServletException, ResponseStatusException {
 
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -37,7 +36,7 @@ public class LoginFilter implements Filter {
 
             //로그인을 하지 않아 세션이 없는 경우
             if (session == null || session.getAttribute(Const.LOGIN_USER) == null) {
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "로그인 해주세요.");
+                throw new RuntimeException("로그인 해주세요.");
             }
             //로그인 성공 로직
             log.info("로그인에 성공했습니다.");
