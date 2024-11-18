@@ -7,7 +7,7 @@
     - 로그인한 세션의 사용자 id를 사용하여 일정을 생성하고 전체 조회를 할 경우 해당 사용자 id로 작성된 일정만 조회가능
   
 ## 2. API 명세서
-https://www.notion.so/13e3bd8753e48033a69dc7a9c9b9a60c?v=bdb9a9f182df4a79a821a21c9e42de92&pvs=4
+[https://www.notion.so/13e3bd8753e48033a69dc7a9c9b9a60c?v=bdb9a9f182df4a79a821a21c9e42de92&pvs=4](https://gossamer-giraffe-f6d.notion.site/13e3bd8753e48033a69dc7a9c9b9a60c?v=bdb9a9f182df4a79a821a21c9e42de92)
 
 ## 3. ERD
 <img width="563" alt="스크린샷 2024-11-14 오후 4 31 50" src="https://github.com/user-attachments/assets/45a4f2b0-ebd6-46a6-93f4-e11b195d48c1">
@@ -53,6 +53,7 @@ https://www.notion.so/13e3bd8753e48033a69dc7a9c9b9a60c?v=bdb9a9f182df4a79a821a21
 - body에 입력하는 값들이 많기 때문에 Validation을 사용하여 더 많은 예외 처리가 가능하다. (예. email을 받기때문에 email 형식을 맞추지 않았을 경우의 예외처리 등)
 - 로그인 전 필터 단계에서 세션이 생성되지 않고 다른 기능에 접근하려고 할 경우 500 INTERNAL SERVER ERROR가 뜨는데 401 UNAUTHORIZED나 400 BadRequest 같은 예외 처리를 해줄 수 있다.
 - 토큰을 이용하거나 비밀번호 암호화를 통해 보안적인 측면을 강화할 수 있다.
+- 
 ## 6. 소감
 이번 프로젝트를 진행하며 JPA로 데이터베이스에 접근하고 CRUD 기능을 구현하는 것은 많이 익숙해 졌다. <br>
 확실히 JPA를 사용하는 것이 JDBC에 비해 쿼리문을 직접 작성할 필요도 적고 콜렉션을 다루듯 여러 함수를 적용하기도 쉬워 작업이 용이했다.<br>
