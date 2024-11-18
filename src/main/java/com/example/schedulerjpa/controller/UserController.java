@@ -2,7 +2,6 @@ package com.example.schedulerjpa.controller;
 
 import com.example.schedulerjpa.dto.*;
 import com.example.schedulerjpa.entity.User;
-import com.example.schedulerjpa.service.LoginService;
 import com.example.schedulerjpa.service.UserService;
 import common.Const;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ import static com.example.schedulerjpa.entity.User.toUser;
 public class UserController {
 
     private final UserService userService;
-    private final LoginService loginService;
 
     @PostMapping("/signup")
     public ResponseEntity<SignUpResponseDto> signUp(@RequestBody SignUpRequestDto requestDto) {
@@ -36,7 +34,7 @@ public class UserController {
             @Valid @RequestBody LoginRequestDto requestDto, HttpServletRequest request
     ) {
         //로그인을 위한 이메일과 비밀번호를 받아 DB와 비교
-        LoginResponseDto loginResponseDto = loginService.login(requestDto.getEmail(), requestDto.getPassword());
+        LoginResponseDto loginResponseDto = userService.login(requestDto.getEmail(), requestDto.getPassword());
 
         //세션 요청 : default value -> true
         HttpSession session = request.getSession();
