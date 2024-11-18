@@ -7,7 +7,7 @@
     - 로그인한 세션의 사용자 id를 사용하여 일정을 생성하고 전체 조회를 할 경우 해당 사용자 id로 작성된 일정만 조회가능
   
 ## 2. API 명세서
-https://www.notion.so/13e3bd8753e48033a69dc7a9c9b9a60c?v=bdb9a9f182df4a79a821a21c9e42de92&pvs=4
+[https://www.notion.so/13e3bd8753e48033a69dc7a9c9b9a60c?v=bdb9a9f182df4a79a821a21c9e42de92&pvs=4](https://gossamer-giraffe-f6d.notion.site/13e3bd8753e48033a69dc7a9c9b9a60c?v=bdb9a9f182df4a79a821a21c9e42de92)
 
 ## 3. ERD
 <img width="563" alt="스크린샷 2024-11-14 오후 4 31 50" src="https://github.com/user-attachments/assets/45a4f2b0-ebd6-46a6-93f4-e11b195d48c1">
