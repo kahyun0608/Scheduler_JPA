@@ -21,7 +21,7 @@ public class ScheduleController {
 
     private final ScheduleService scheduleService;
 
-    @PostMapping("/post")
+    @PostMapping
     public ResponseEntity<ScheduleResponseDto> saveSchedule(@RequestBody ScheduleRequestDto requestDto, ServletRequest request) {
 
         User sessionUser = findSessionUser(request);
